@@ -1,5 +1,25 @@
 # GoUser
 ## 登录成功之后用户信息保存工具
+#### 方法
+```java
+//设置用户信息
+GoUser.getInstance().setUser(new UserInfo("allen", "welcome to android", 1));
+
+//获取用户信息
+UserInfo user = GoUser.getInstance().getUser();
+
+//设置token
+GoUser.getInstance().setUserToken("this is token");
+
+//获取token
+GoUser.getInstance().getUserToken();
+
+//是否登录
+ boolean login = GoUser.getInstance().isLogin();
+ 
+//退出登陆
+ GoUser.getInstance().loginOut();
+```
 
 ### 使用
 #### Gradle 
@@ -77,7 +97,9 @@ public class DbUser implements IGoUser {
 
     @Override
     public void setUserToken(String token) {
-        mEditor.putString("user_token", token).apply();
+        if (!TextUtils.isEmpty(token)){
+            mEditor.putString("user_token", token).apply();
+        }
     }
 
     @Override
@@ -92,24 +114,4 @@ public class DbUser implements IGoUser {
         mEditor.clear().apply();
     }
 }
-```
-#### 方法
-```java
-//设置用户信息
-GoUser.getInstance().setUser(new UserInfo("allen", "welcome to android", 1));
-
-//获取用户信息
-UserInfo user = GoUser.getInstance().getUser();
-
-//设置token
-GoUser.getInstance().setUserToken("this is token");
-
-//获取token
-GoUser.getInstance().getUserToken();
-
-//是否登录
- boolean login = GoUser.getInstance().isLogin();
- 
-//退出登陆
- GoUser.getInstance().loginOut();
 ```
