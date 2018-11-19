@@ -24,6 +24,7 @@ GoUser.getInstance().getUserToken();
 ### 使用
 #### Gradle 
 ```xml
+implementation 'com.github.golabe.GoUser:library:1.0.0'
 ```
 #### 初始化工具
 ```java
