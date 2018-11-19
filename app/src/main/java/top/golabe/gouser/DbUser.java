@@ -2,6 +2,7 @@ package top.golabe.gouser;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.TextUtils;
 
 import top.golabe.library.interfaces.IGoUser;
 import top.golabe.library.interfaces.IJsonConverter;
@@ -18,16 +19,11 @@ public class DbUser implements IGoUser {
         this.mClass=cls;
         this.mJsonConverter=jsonConverter;
     }
-
-
     @Override
     public <T>T getUser() {
         String user = mSharedPreferences.getString("user_info", "");
         return (T) mJsonConverter.fromJson(user,mClass);
     }
-
-
-
     @Override
     public <T> void setUser(T user) {
         if (user != null) {
@@ -43,18 +39,17 @@ public class DbUser implements IGoUser {
 
     @Override
     public void setUserToken(String token) {
-        mEditor.putString("user_token", token).apply();
+        if (!TextUtils.isEmpty(token)){
+            mEditor.putString("user_token", token).apply();
+        }
     }
 
     @Override
     public boolean isLogin() {
         return getUser()!=null;
     }
-
-
-
     @Override
-    public void loginOut() {
+    public void logout() {
         mEditor.clear().apply();
     }
 }

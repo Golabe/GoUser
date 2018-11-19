@@ -10,6 +10,6 @@ public interface IGoUser {
     void setUserToken(String token);
 
     boolean isLogin();
-    void loginOut();
+    void logout();
 
 }

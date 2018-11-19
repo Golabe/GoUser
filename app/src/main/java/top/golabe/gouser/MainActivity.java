@@ -25,9 +25,10 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "username:" + user.getUsername(), Toast.LENGTH_SHORT).show();
 
         GoUser.getInstance().setUserToken("this is token");
+        GoUser.getInstance().getUserToken();
         boolean login = GoUser.getInstance().isLogin();
         Toast.makeText(this, "isLogin:" + login, Toast.LENGTH_SHORT).show();
 
-
+        GoUser.getInstance().logout();
     }
 }

@@ -46,7 +46,7 @@ public class GoUser implements IGoUser {
 
     @Override
     public void setUserToken(String token) {
-        mIGoUser.setUserToken(token);
+            mIGoUser.setUserToken(token);
     }
 
     @Override
@@ -55,8 +55,8 @@ public class GoUser implements IGoUser {
     }
 
     @Override
-    public void loginOut() {
-        mIGoUser.loginOut();
+    public void logout() {
+        mIGoUser.logout();
     }
 
     public void build(IGoUser goUser) {

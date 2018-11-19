@@ -2,6 +2,7 @@ package top.golabe.library;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.TextUtils;
 
 import top.golabe.library.interfaces.IGoUser;
 import top.golabe.library.interfaces.IJsonConverter;
@@ -43,7 +44,9 @@ public class SpUser implements IGoUser {
 
     @Override
     public void setUserToken(String token) {
-        mEditor.putString("user_token", token).apply();
+        if (!TextUtils.isEmpty(token)){
+            mEditor.putString("user_token", token).apply();
+        }
     }
 
     @Override
@@ -52,7 +55,7 @@ public class SpUser implements IGoUser {
     }
 
     @Override
-    public void loginOut() {
+    public void logout() {
         mEditor.clear().apply();
     }
 }
