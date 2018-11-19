@@ -18,7 +18,7 @@ GoUser.getInstance().getUserToken();
  boolean login = GoUser.getInstance().isLogin();
  
 //退出登陆
- GoUser.getInstance().loginOut();
+ GoUser.getInstance().logout();
 ```
 
 ### 使用
